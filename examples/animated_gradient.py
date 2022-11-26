@@ -1,7 +1,7 @@
 # This script simply sends an animated gradient to the virtual camera.
 
 import numpy as np
-import pyvirtualcam
+import pyvirtualcam2
 
 
 # https://note.nkmk.me/en/python-numpy-generate-gradation-image/
@@ -22,7 +22,7 @@ speed = 2
 red = np.array([255, 0, 0], np.uint8)
 white = np.array([255, 255, 255], np.uint8)
 
-with pyvirtualcam.Camera(width=1280, height=720, fps=20, print_fps=True) as cam:
+with pyvirtualcam2.Camera(width=1280, height=720, fps=20, print_fps=True) as cam:
     print(f'Virtual cam started: {cam.device} ({cam.width}x{cam.height} @ {cam.fps}fps)')
     reverse = False
     last_stop = 0

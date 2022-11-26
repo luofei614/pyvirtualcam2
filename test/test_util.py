@@ -2,7 +2,7 @@ import os
 import platform
 import time
 import pytest
-import pyvirtualcam.util
+import pyvirtualcam2.util
 
 @pytest.mark.skipif(
     os.environ.get('CI') and platform.system() == 'Darwin',
@@ -10,7 +10,7 @@ import pyvirtualcam.util
 def test_fps_counter():
     target_fps = 20
     s_per_frame = 1 / target_fps
-    counter = pyvirtualcam.util.FPSCounter()
+    counter = pyvirtualcam2.util.FPSCounter()
     start = time.perf_counter()
     for frame_idx in range(60):
         end = start + s_per_frame

@@ -324,7 +324,7 @@ jobs:
 
     - name: Install from wheel
       run: |
-        pip install dist/pyvirtualcam*cp39-manylinux*.whl
+        pip install dist/pyvirtualcam2*cp39-manylinux*.whl
         pip install -r dev-requirements.txt
 
     - name: Build docs

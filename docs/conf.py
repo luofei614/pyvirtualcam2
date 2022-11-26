@@ -1,4 +1,4 @@
-import pyvirtualcam
+import pyvirtualcam2
 
 # -- General configuration ------------------------------------------------
 
@@ -31,7 +31,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'pyvirtualcam'
+project = u'pyvirtualcam2'
 copyright = u'2020, Maik Riechert'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -39,7 +39,7 @@ copyright = u'2020, Maik Riechert'
 # built documents.
 #
 # The short X.Y version.
-version = pyvirtualcam.__version__
+version = pyvirtualcam2.__version__
 # The full version, including alpha/beta/rc tags.
 release = version
 
@@ -97,12 +97,12 @@ html_theme_options = {
     "icon_links": [
         {
             "name": "GitHub",
-            "url": "https://github.com/letmaik/pyvirtualcam",
+            "url": "https://github.com/letmaik/pyvirtualcam2",
             "icon": "fab fa-github-square",
         },
         {
             "name": "PyPI",
-            "url": "https://pypi.org/project/pyvirtualcam",
+            "url": "https://pypi.org/project/pyvirtualcam2",
             "icon": "fas fa-box",
         }
     ]
@@ -183,7 +183,7 @@ html_show_sphinx = True
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'pyvirtualcam'
+htmlhelp_basename = 'pyvirtualcam2'
 
 
 autoclass_content = 'both'

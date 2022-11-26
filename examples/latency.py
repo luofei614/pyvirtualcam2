@@ -3,7 +3,7 @@
 
 import time
 import numpy as np
-import pyvirtualcam
+import pyvirtualcam2
 
 colors = [
     ('RED', np.array([255, 0, 0], np.uint8)),
@@ -11,7 +11,7 @@ colors = [
     ('BLUE', np.array([0, 0, 255], np.uint8))
 ]
 
-with pyvirtualcam.Camera(width=1280, height=720, fps=30) as cam:
+with pyvirtualcam2.Camera(width=1280, height=720, fps=30) as cam:
     print(f'Using virtual camera: {cam.device}')
     frame = np.zeros((cam.height, cam.width, 3), np.uint8)  # RGB
     t_last_change = 0

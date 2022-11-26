@@ -11,7 +11,7 @@ assignees: ''
 
 - Operating system:
 - Python version:
-- pyvirtualcam version:
+- pyvirtualcam2 version:
 - Virtual camera (OBS, v4l2loopback, UnityCapture): 
 - Virtual camera version:
 

@@ -77,13 +77,13 @@ Get-ChildItem env:
 # Install and import in an empty environment.
 # This is to catch DLL issues that may be hidden with dependencies.
 Create-And-Enter-VEnv import-test
-python -m pip uninstall -y pyvirtualcam
+python -m pip uninstall -y pyvirtualcam2
 ls dist\*cp${PYVER}*win*.whl | % { exec { python -m pip install $_ } }
 
 # Avoid using in-source package during tests
 mkdir -f tmp_for_test | out-null
 pushd tmp_for_test
-exec { python -c "import pyvirtualcam" }
+exec { python -c "import pyvirtualcam2" }
 popd
 
 Exit-VEnv
@@ -91,7 +91,7 @@ Exit-VEnv
 # Unit tests
 # Run test suite with all required and optional dependencies
 Create-And-Enter-VEnv testsuite
-python -m pip uninstall -y pyvirtualcam
+python -m pip uninstall -y pyvirtualcam2
 ls dist\*cp${PYVER}*win*.whl | % { exec { python -m pip install $_ } }
 exec { python -m pip install -r dev-requirements.txt }
 
@@ -99,7 +99,7 @@ exec { python -m pip install -r dev-requirements.txt }
 Push-Location test/win-dshow-capture
 exec { python -m pip install wheel }
 exec { python -u setup.py bdist_wheel }
-python -m pip uninstall -y pyvirtualcam_win_dshow_capture
+python -m pip uninstall -y pyvirtualcam2_win_dshow_capture
 ls dist\*cp${PYVER}*win*.whl | % { exec { python -m pip install $_ } }
 Pop-Location
 

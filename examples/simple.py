@@ -1,9 +1,9 @@
 # This script is the sample from the README.
 
 import numpy as np
-import pyvirtualcam
+import pyvirtualcam2
 
-with pyvirtualcam.Camera(width=1280, height=720, fps=20, print_fps=True) as cam:
+with pyvirtualcam2.Camera(width=1280, height=720, fps=20, print_fps=True) as cam:
     print(f'Using virtual camera: {cam.device}')
     frame = np.zeros((cam.height, cam.width, 3), np.uint8)  # RGB
     while True:

@@ -164,7 +164,7 @@ class VirtualOutput {
     std::string device()
     {
         // https://github.com/obsproject/obs-studio/blob/eb98505a2/plugins/win-dshow/virtualcam-module/virtualcam-module.cpp#L196
-        return "OBS Virtual Camera";
+        return "OBS Virtual Camera2";
     }
 
     uint32_t native_fourcc() {

@@ -25,47 +25,47 @@ common_inc = [get_pybind_include(), 'external/libyuv/include']
 
 if platform.system() == 'Windows':
     ext_modules.append(
-        Extension('pyvirtualcam._native_windows_obs',
+        Extension('pyvirtualcam2._native_windows_obs',
             # Sort input source files to ensure bit-for-bit reproducible builds
             # (https://github.com/pybind/python_example/pull/53)
             sorted([
-                'pyvirtualcam/native_windows_obs/main.cpp',
-                'pyvirtualcam/native_windows_obs/queue/shared-memory-queue.c',
+                'pyvirtualcam2/native_windows_obs/main.cpp',
+                'pyvirtualcam2/native_windows_obs/queue/shared-memory-queue.c',
             ] + common_src),
-            include_dirs=['pyvirtualcam/native_windows_obs'] + common_inc,
+            include_dirs=['pyvirtualcam2/native_windows_obs'] + common_inc,
             extra_link_args=["/DEFAULTLIB:advapi32.lib"],
             language='c++'
         )
     )
     ext_modules.append(
-        Extension('pyvirtualcam._native_windows_unity_capture',
-            sorted(['pyvirtualcam/native_windows_unity_capture/main.cpp'] + common_src),
-            include_dirs=['pyvirtualcam/native_windows_unity_capture'] + common_inc,
+        Extension('pyvirtualcam2._native_windows_unity_capture',
+            sorted(['pyvirtualcam2/native_windows_unity_capture/main.cpp'] + common_src),
+            include_dirs=['pyvirtualcam2/native_windows_unity_capture'] + common_inc,
             extra_link_args=["/DEFAULTLIB:advapi32.lib"],
             language='c++'
         )
     )
 elif platform.system() == 'Darwin':
     ext_modules.append(
-        Extension('pyvirtualcam._native_macos_obs',
+        Extension('pyvirtualcam2._native_macos_obs',
             # Sort input source files to ensure bit-for-bit reproducible builds
             # (https://github.com/pybind/python_example/pull/53)
             sorted([
-                'pyvirtualcam/native_macos_obs/main.mm',
-                'pyvirtualcam/native_macos_obs/server/OBSDALMachServer.mm',
+                'pyvirtualcam2/native_macos_obs/main.mm',
+                'pyvirtualcam2/native_macos_obs/server/OBSDALMachServer.mm',
             ] + common_src),
-            include_dirs=['pyvirtualcam/native_macos_obs'] + common_inc,
+            include_dirs=['pyvirtualcam2/native_macos_obs'] + common_inc,
             extra_link_args=["-framework", "Foundation", "-framework", "CoreVideo"],
             language='objc'
         )
     )
 elif platform.system() == 'Linux':
     ext_modules.append(
-        Extension('pyvirtualcam._native_linux_v4l2loopback',
+        Extension('pyvirtualcam2._native_linux_v4l2loopback',
             # Sort input source files to ensure bit-for-bit reproducible builds
             # (https://github.com/pybind/python_example/pull/53)
-            sorted(['pyvirtualcam/native_linux_v4l2loopback/main.cpp'] + common_src),
-            include_dirs=['pyvirtualcam/native_linux_v4l2loopback'] + common_inc,
+            sorted(['pyvirtualcam2/native_linux_v4l2loopback/main.cpp'] + common_src),
+            include_dirs=['pyvirtualcam2/native_linux_v4l2loopback'] + common_inc,
             extra_compile_args=['-flto'],
             language='c++'
         )
@@ -129,14 +129,14 @@ class BuildExt(build_ext):
         build_ext.build_extensions(self)
 
 # make __version__ available (https://stackoverflow.com/a/16084844)
-exec(open('pyvirtualcam/_version.py').read())
+exec(open('pyvirtualcam2/_version.py').read())
 
 setup(
-    name='pyvirtualcam',
+    name='pyvirtualcam2',
     version=__version__,
     author='Maik Riechert',
     author_email='maik.riechert@arcor.de',
-    url='https://github.com/letmaik/pyvirtualcam',
+    url='https://github.com/letmaik/pyvirtualcam2',
     description='Send frames to a virtual camera',
     long_description = open('README.md').read(),
     long_description_content_type='text/markdown',

@@ -4,8 +4,8 @@
 # - use BGR as pixel format
 
 import argparse
-import pyvirtualcam
-from pyvirtualcam import PixelFormat
+import pyvirtualcam2
+from pyvirtualcam2 import PixelFormat
 import cv2
 
 parser = argparse.ArgumentParser()
@@ -22,7 +22,7 @@ width = int(video.get(cv2.CAP_PROP_FRAME_WIDTH))
 height = int(video.get(cv2.CAP_PROP_FRAME_HEIGHT))
 fps = video.get(cv2.CAP_PROP_FPS)
 
-with pyvirtualcam.Camera(width, height, fps, fmt=PixelFormat.BGR,
+with pyvirtualcam2.Camera(width, height, fps, fmt=PixelFormat.BGR,
                          device=args.device, print_fps=args.fps) as cam:
     print(f'Virtual cam started: {cam.device} ({cam.width}x{cam.height} @ {cam.fps}fps)')
     count = 0

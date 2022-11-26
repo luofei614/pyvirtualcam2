@@ -65,10 +65,10 @@ echo "Dumping LC_VERSION_MIN_MACOSX (pre-10.14) & LC_BUILD_VERSION"
 mkdir tmp_wheel
 pushd tmp_wheel
 unzip ../dist/*.whl
-echo pyvirtualcam/*.so
-otool -l pyvirtualcam/*.so | grep -A 3 LC_VERSION_MIN_MACOSX || true
-otool -l pyvirtualcam/*.so | grep -A 4 LC_BUILD_VERSION || true
-for file in pyvirtualcam/.dylibs/*.dylib; do
+echo pyvirtualcam2/*.so
+otool -l pyvirtualcam2/*.so | grep -A 3 LC_VERSION_MIN_MACOSX || true
+otool -l pyvirtualcam2/*.so | grep -A 4 LC_BUILD_VERSION || true
+for file in pyvirtualcam2/.dylibs/*.dylib; do
     echo $file
     otool -l $file | grep -A 3 LC_VERSION_MIN_MACOSX || true
     otool -l $file | grep -A 4 LC_BUILD_VERSION || true

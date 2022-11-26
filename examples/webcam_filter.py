@@ -4,8 +4,8 @@
 
 import argparse
 import cv2
-import pyvirtualcam
-from pyvirtualcam import PixelFormat
+import pyvirtualcam2
+from pyvirtualcam2 import PixelFormat
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--camera", type=int, default=0, help="ID of webcam device (default: 0)")
@@ -34,7 +34,7 @@ print(f'Webcam capture started ({width}x{height} @ {fps_in}fps)')
 
 fps_out = 20
 
-with pyvirtualcam.Camera(width, height, fps_out, fmt=PixelFormat.BGR, print_fps=args.fps) as cam:
+with pyvirtualcam2.Camera(width, height, fps_out, fmt=PixelFormat.BGR, print_fps=args.fps) as cam:
     print(f'Virtual cam started: {cam.device} ({cam.width}x{cam.height} @ {cam.fps}fps)')
 
     # Shake two channels horizontally each frame.

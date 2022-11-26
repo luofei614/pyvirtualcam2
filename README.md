@@ -1,14 +1,14 @@
-# pyvirtualcam
+# pyvirtualcam2
 
-pyvirtualcam sends frames to a virtual camera from Python.
+pyvirtualcam2 sends frames to a virtual camera from Python.
 
 ## Usage
 
 ```py
-import pyvirtualcam
+import pyvirtualcam2
 import numpy as np
 
-with pyvirtualcam.Camera(width=1280, height=720, fps=20) as cam:
+with pyvirtualcam2.Camera(width=1280, height=720, fps=20) as cam:
     print(f'Using virtual camera: {cam.device}')
     frame = np.zeros((cam.height, cam.width, 3), np.uint8)  # RGB
     while True:
@@ -17,21 +17,21 @@ with pyvirtualcam.Camera(width=1280, height=720, fps=20) as cam:
         cam.sleep_until_next_frame()
 ```
 
-pyvirtualcam uses the first available virtual camera it finds (see later section).
+pyvirtualcam2 uses the first available virtual camera it finds (see later section).
 
-For more examples, including using different pixel formats like BGR, or selecting a specific camera device, check out the [`examples/`](https://github.com/letmaik/pyvirtualcam/tree/main/examples) folder.
+For more examples, including using different pixel formats like BGR, or selecting a specific camera device, check out the [`examples/`](https://github.com/letmaik/pyvirtualcam2/tree/main/examples) folder.
 
-See also the [API Documentation](https://letmaik.github.io/pyvirtualcam).
+See also the [API Documentation](https://letmaik.github.io/pyvirtualcam2).
 
 ## Installation
 
 This package works on Windows, macOS, and Linux. Install it from PyPI with:
 
 ```sh
-pip install pyvirtualcam
+pip install pyvirtualcam2
 ```
 
-pyvirtualcam relies on existing virtual cameras which have to be installed first. See the next section for details.
+pyvirtualcam2 relies on existing virtual cameras which have to be installed first. See the next section for details.
 
 ## Supported virtual cameras
 
@@ -53,7 +53,7 @@ To use the Unity Capture virtual camera, follow the [installation instructions](
 
 [OBS](https://obsproject.com/) includes a built-in virtual camera for macOS (since 26.1).
 
-**NOTE**: Starting with pyvirtualcam 0.10, only OBS 28 is supported. Install an older version if you need OBS 26 / 27 support.
+**NOTE**: Starting with pyvirtualcam2 0.10, only OBS 28 is supported. Install an older version if you need OBS 26 / 27 support.
 
 To use the OBS virtual camera, follow these one-time setup steps:
 - [Install OBS](https://obsproject.com/).
@@ -65,7 +65,7 @@ Note that OBS provides a single camera instance only, so it is *not* possible to
 
 ### Linux: v4l2loopback
 
-pyvirtualcam uses [v4l2loopback](https://github.com/umlaeute/v4l2loopback) virtual cameras on Linux.
+pyvirtualcam2 uses [v4l2loopback](https://github.com/umlaeute/v4l2loopback) virtual cameras on Linux.
 
 To create a v4l2loopback virtual camera on Ubuntu, run the following:
 
@@ -81,8 +81,8 @@ For further information, see the [v4l2loopback documentation](https://github.com
 ### Linux/macOS
 
 ```sh
-git clone https://github.com/letmaik/pyvirtualcam --recursive
-cd pyvirtualcam
+git clone https://github.com/letmaik/pyvirtualcam2 --recursive
+cd pyvirtualcam2
 pip install .
 ```
 
@@ -91,7 +91,7 @@ pip install .
 These instructions are experimental and support is not provided for them.
 Typically, there should be no need to build manually since wheels are hosted on PyPI.
 
-You need to have Visual Studio installed to build pyvirtualcam.
+You need to have Visual Studio installed to build pyvirtualcam2.
 
 In a PowerShell window:
 ```sh
@@ -99,8 +99,8 @@ $env:USE_CONDA = '1'
 $env:PYTHON_VERSION = '3.7'
 $env:PYTHON_ARCH = '64'
 $env:NUMPY_VERSION = '1.14'
-git clone https://github.com/letmaik/pyvirtualcam --recursive
-cd pyvirtualcam
+git clone https://github.com/letmaik/pyvirtualcam2 --recursive
+cd pyvirtualcam2
 powershell .github/scripts/build-windows.ps1
 ```
 The above will download all build dependencies (including a Python installation)

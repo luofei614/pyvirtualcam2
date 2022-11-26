@@ -25,11 +25,11 @@ except ImportError:
         print('Skipping due to https://github.com/opencv/opencv-python/issues/291#issuecomment-841816850')
     pytest.skip('OpenCV is not installed', allow_module_level=True)
 
-import pyvirtualcam
-from pyvirtualcam import PixelFormat
+import pyvirtualcam2
+from pyvirtualcam2 import PixelFormat
 
 if platform.system() == 'Windows':
-    import pyvirtualcam_win_dshow_capture as dshow
+    import pyvirtualcam2_win_dshow_capture as dshow
 
     def capture_rgb(device: str, width: int, height: int):
         rgb, timestamp_ms = dshow.capture(device, width, height)
@@ -169,7 +169,7 @@ frames_rgb = {
     PixelFormat.UYVY: cv2.cvtColor(frames[PixelFormat.UYVY], cv2.COLOR_YUV2RGB_UYVY),
 }
 
-@pytest.mark.parametrize("backend", list(pyvirtualcam.camera.BACKENDS))
+@pytest.mark.parametrize("backend", list(pyvirtualcam2.camera.BACKENDS))
 @pytest.mark.parametrize("fmt", formats)
 @pytest.mark.parametrize("mode", ['latency', 'diff'])
 def test_capture(backend: str, fmt: PixelFormat, mode: str, tmp_path: Path):
@@ -184,13 +184,13 @@ def test_capture(backend: str, fmt: PixelFormat, mode: str, tmp_path: Path):
         if fmt in [PixelFormat.UYVY, PixelFormat.YUYV]:
             pytest.skip('Latency test currently not supported for packed YUV formats')
         if fmt in [PixelFormat.I420, PixelFormat.NV12] and platform.system() == 'Darwin':
-            # https://github.com/letmaik/pyvirtualcam/issues/82
+            # https://github.com/letmaik/pyvirtualcam2/issues/82
             pytest.skip('Latency test currently not supported for I420 & NV12 on macOS')
 
     # informational only
     imageio.imwrite(f'test_{fmt}_in.png', frames_rgb[fmt])
 
-    # Sending frames via pyvirtualcam and capturing them in parallel via OpenCV / DShow
+    # Sending frames via pyvirtualcam2 and capturing them in parallel via OpenCV / DShow
     # is done in separate processes to avoid locking and cleanup issues.
     info_path = tmp_path / 'info.json'
     p = subprocess.Popen([
@@ -238,7 +238,7 @@ def test_capture(backend: str, fmt: PixelFormat, mode: str, tmp_path: Path):
     else:
         d = np.fabs(captured_rgb.astype(np.int16) - frames_rgb[fmt]).max()
         if platform.system() == 'Darwin':
-            # https://github.com/letmaik/pyvirtualcam/issues/82
+            # https://github.com/letmaik/pyvirtualcam2/issues/82
             assert d <= 35
         else:
             assert d <= 2
@@ -258,7 +258,7 @@ def send_frames(backend: str, fmt: PixelFormat, info_path: Path, mode: str):
     if mode == 'latency':
         frame[:] = 0
     try:
-        with pyvirtualcam.Camera(w, h, fps, backend=backend, fmt=fmt) as cam:
+        with pyvirtualcam2.Camera(w, h, fps, backend=backend, fmt=fmt) as cam:
             print(f'sending frames to {cam.device}...')
             with open(info_path, 'w') as f:
                 json.dump(cam.device, f)
@@ -290,7 +290,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--action', choices=['send', 'capture'], required=True)
     parser.add_argument('--mode', choices=['diff', 'latency'], required=True)
-    parser.add_argument('--backend', choices=list(pyvirtualcam.camera.BACKENDS), required=True)
+    parser.add_argument('--backend', choices=list(pyvirtualcam2.camera.BACKENDS), required=True)
     parser.add_argument('--fmt', type=lambda fmt: PixelFormat[fmt], required=True)
     parser.add_argument('--info-path', type=Path, required=True)
     args = parser.parse_args()

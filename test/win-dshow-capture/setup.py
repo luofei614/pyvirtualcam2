@@ -21,7 +21,7 @@ common_src = glob.glob('../../external/libyuv/source/*.cc')
 common_inc = [get_pybind_include(), '../../external/libyuv/include']
 
 ext_modules.append(
-    Extension('pyvirtualcam_win_dshow_capture._win_dshow_capture',
+    Extension('pyvirtualcam2_win_dshow_capture._win_dshow_capture',
         ['main.cpp', 'CommandCam.cpp'] + common_src,
         include_dirs=common_inc,
         extra_link_args=["/DEFAULTLIB:strmiids.lib"],
@@ -92,7 +92,7 @@ class BuildExt(build_ext):
         build_ext.build_extensions(self)
 
 setup(
-    name='pyvirtualcam_win_dshow_capture',
+    name='pyvirtualcam2_win_dshow_capture',
     version='0.1.0',
     ext_modules=ext_modules,
     packages = find_packages(),

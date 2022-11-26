@@ -27,11 +27,11 @@ ${PYBIN}/pip install numpy==${NUMPY_VERSION}
 # List installed packages
 ${PYBIN}/pip freeze
 
-# Build pyvirtualcam wheel
+# Build pyvirtualcam2 wheel
 export LDFLAGS="-Wl,--strip-debug"
 ${PYBIN}/python setup.py bdist_wheel --dist-dir dist-tmp
 
 # Bundle external shared libraries into wheel and fix the wheel tags
 mkdir dist
-auditwheel repair dist-tmp/pyvirtualcam*.whl -w dist
+auditwheel repair dist-tmp/pyvirtualcam2*.whl -w dist
 ls -al dist

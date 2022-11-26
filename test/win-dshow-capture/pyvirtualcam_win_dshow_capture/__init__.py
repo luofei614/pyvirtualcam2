@@ -1,4 +1,4 @@
-from pyvirtualcam_win_dshow_capture._win_dshow_capture import DShowCapture
+from pyvirtualcam2_win_dshow_capture._win_dshow_capture import DShowCapture
 
 def capture(device: str, pref_width: int, pref_height: int):
     dshow = DShowCapture(device, pref_width, pref_height)

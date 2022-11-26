@@ -7,7 +7,7 @@ from enum import Enum
 
 import numpy as np
 
-from pyvirtualcam.util import FPSCounter, encode_fourcc, decode_fourcc
+from pyvirtualcam2.util import FPSCounter, encode_fourcc, decode_fourcc
 
 class Backend(ABC):
     """
@@ -35,7 +35,7 @@ class Backend(ABC):
             rate should be chosen. An exception should generally not be raised.
         :param fourcc: Pixel format of frames passed to :meth:`send`, encoded as
             `libyuv FourCC <https://chromium.googlesource.com/libyuv/libyuv/+/refs/heads/master/include/libyuv/video_common.h>`_
-            code. One of the codes in the :class:`~pyvirtualcam.PixelFormat` enum.
+            code. One of the codes in the :class:`~pyvirtualcam2.PixelFormat` enum.
             If the pixel format is unsupported then an exception must
             be raised.
         :param device: If given, name of the virtual camera device to use,
@@ -77,7 +77,7 @@ class Backend(ABC):
     def native_fourcc(self) -> Optional[int]:
         """ The `libyuv FourCC <https://chromium.googlesource.com/libyuv/libyuv/+/refs/heads/master/include/libyuv/video_common.h>`_
         code of the native pixel format used in the backend.
-        Must be one of the codes in the :class:`~pyvirtualcam.PixelFormat` enum,
+        Must be one of the codes in the :class:`~pyvirtualcam2.PixelFormat` enum,
         or ``None`` if no matching code is defined or the value
         for some other reason is not available or sensible.
         
@@ -99,20 +99,20 @@ def register_backend(name: str, clazz):
     it will be replaced.
 
     :param name: Name of the backend.
-        Used as ``backend`` argument in :meth:`~pyvirtualcam.Camera`.
-    :param clazz: Class type of the backend conforming to :class:`~pyvirtualcam.Backend`.
+        Used as ``backend`` argument in :meth:`~pyvirtualcam2.Camera`.
+    :param clazz: Class type of the backend conforming to :class:`~pyvirtualcam2.Backend`.
     """
     BACKENDS[name] = clazz
 
 if platform.system() == 'Windows':
-    from pyvirtualcam import _native_windows_obs, _native_windows_unity_capture
+    from pyvirtualcam2 import _native_windows_obs, _native_windows_unity_capture
     register_backend('obs', _native_windows_obs.Camera)
     register_backend('unitycapture', _native_windows_unity_capture.Camera)
 elif platform.system() == 'Darwin':
-    from pyvirtualcam import _native_macos_obs
+    from pyvirtualcam2 import _native_macos_obs
     register_backend('obs', _native_macos_obs.Camera)
 elif platform.system() == 'Linux':
-    from pyvirtualcam import _native_linux_v4l2loopback
+    from pyvirtualcam2 import _native_linux_v4l2loopback
     register_backend('v4l2loopback', _native_linux_v4l2loopback.Camera)
 
 class PixelFormat(Enum):
@@ -322,7 +322,7 @@ class Camera:
         """Send a frame to the virtual camera device.
 
         :param frame: Frame to send. The shape of the array must match
-            the chosen :class:`~pyvirtualcam.PixelFormat`.
+            the chosen :class:`~pyvirtualcam2.PixelFormat`.
         """
         if frame.dtype != np.uint8:
             raise TypeError(f'unexpected frame dtype: {frame.dtype} != uint8')

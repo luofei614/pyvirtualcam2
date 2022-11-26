@@ -157,7 +157,7 @@ class VirtualOutput {
                 throw std::runtime_error(
                     "No v4l2 loopback device found at /dev/video[0-99]. "
                     "Did you run 'modprobe v4l2loopback'? "
-                    "See also pyvirtualcam's documentation.");
+                    "See also pyvirtualcam2's documentation.");
             }
         }
 

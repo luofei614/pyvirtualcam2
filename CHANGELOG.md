@@ -43,8 +43,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.7.0] - 2021-03-26
 ### Added
-- [API documentation](https://letmaik.github.io/pyvirtualcam).
-- `pyvirtualcam.register_backend()` for registering custom backends.
+- [API documentation](https://letmaik.github.io/pyvirtualcam2).
+- `pyvirtualcam2.register_backend()` for registering custom backends.
 - `latency.py` sample for visually evaluating latency.
 - `--filter` flag in `webcam_filter.py` sample for choosing a filter (`shake` or `none`).
 
@@ -125,18 +125,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Support for [OBS-VirtualCam](https://github.com/CatxFish/obs-virtual-cam).
 
 
-[0.10.2]: https://github.com/letmaik/pyvirtualcam/compare/v0.10.1...v0.10.2
-[0.10.1]: https://github.com/letmaik/pyvirtualcam/compare/v0.10.0...v0.10.1
-[0.10.0]: https://github.com/letmaik/pyvirtualcam/compare/v0.9.1...v0.10.0
-[0.9.1]: https://github.com/letmaik/pyvirtualcam/compare/v0.9.0...v0.9.1
-[0.9.0]: https://github.com/letmaik/pyvirtualcam/compare/v0.8.0...v0.9.0
-[0.8.0]: https://github.com/letmaik/pyvirtualcam/compare/v0.7.0...v0.8.0
-[0.7.0]: https://github.com/letmaik/pyvirtualcam/compare/v0.6.0...v0.7.0
-[0.6.0]: https://github.com/letmaik/pyvirtualcam/compare/v0.5.0...v0.6.0
-[0.5.0]: https://github.com/letmaik/pyvirtualcam/compare/v0.4.0...v0.5.0
-[0.4.0]: https://github.com/letmaik/pyvirtualcam/compare/v0.3.2...v0.4.0
-[0.3.2]: https://github.com/letmaik/pyvirtualcam/compare/v0.3.1...v0.3.2
-[0.3.1]: https://github.com/letmaik/pyvirtualcam/compare/v0.3.0...v0.3.1
-[0.3.0]: https://github.com/letmaik/pyvirtualcam/compare/v0.2.0...v0.3.0
-[0.2.0]: https://github.com/letmaik/pyvirtualcam/compare/v0.1.0...v0.2.0
-[0.1.0]: https://github.com/letmaik/pyvirtualcam/releases/tag/v0.1.0
+[0.10.2]: https://github.com/letmaik/pyvirtualcam2/compare/v0.10.1...v0.10.2
+[0.10.1]: https://github.com/letmaik/pyvirtualcam2/compare/v0.10.0...v0.10.1
+[0.10.0]: https://github.com/letmaik/pyvirtualcam2/compare/v0.9.1...v0.10.0
+[0.9.1]: https://github.com/letmaik/pyvirtualcam2/compare/v0.9.0...v0.9.1
+[0.9.0]: https://github.com/letmaik/pyvirtualcam2/compare/v0.8.0...v0.9.0
+[0.8.0]: https://github.com/letmaik/pyvirtualcam2/compare/v0.7.0...v0.8.0
+[0.7.0]: https://github.com/letmaik/pyvirtualcam2/compare/v0.6.0...v0.7.0
+[0.6.0]: https://github.com/letmaik/pyvirtualcam2/compare/v0.5.0...v0.6.0
+[0.5.0]: https://github.com/letmaik/pyvirtualcam2/compare/v0.4.0...v0.5.0
+[0.4.0]: https://github.com/letmaik/pyvirtualcam2/compare/v0.3.2...v0.4.0
+[0.3.2]: https://github.com/letmaik/pyvirtualcam2/compare/v0.3.1...v0.3.2
+[0.3.1]: https://github.com/letmaik/pyvirtualcam2/compare/v0.3.0...v0.3.1
+[0.3.0]: https://github.com/letmaik/pyvirtualcam2/compare/v0.2.0...v0.3.0
+[0.2.0]: https://github.com/letmaik/pyvirtualcam2/compare/v0.1.0...v0.2.0
+[0.1.0]: https://github.com/letmaik/pyvirtualcam2/releases/tag/v0.1.0

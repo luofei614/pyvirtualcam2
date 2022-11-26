@@ -6,8 +6,8 @@ import argparse
 import os
 import numpy as np
 import imageio
-import pyvirtualcam
-from pyvirtualcam import PixelFormat
+import pyvirtualcam2
+from pyvirtualcam2 import PixelFormat
 
 this_dir = os.path.dirname(__file__)
 sample_gif_path = os.path.join(this_dir, "nyancat.gif")
@@ -30,7 +30,7 @@ cam_fmt = PixelFormat.RGBA
 gif_x = (cam_width - gif_width) // 2
 gif_y = (cam_height - gif_height) // 2
 
-with pyvirtualcam.Camera(cam_width, cam_height, gif_fps, fmt=cam_fmt,
+with pyvirtualcam2.Camera(cam_width, cam_height, gif_fps, fmt=cam_fmt,
                          device=args.device, print_fps=args.fps) as cam:
     print(f'Virtual cam started: {cam.device} ({cam.width}x{cam.height} @ {cam.fps}fps)')
 

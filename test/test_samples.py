@@ -1,10 +1,10 @@
 import pytest
 import numpy as np
-import pyvirtualcam
+import pyvirtualcam2
 
-@pytest.mark.parametrize("backend", list(pyvirtualcam.camera.BACKENDS))
+@pytest.mark.parametrize("backend", list(pyvirtualcam2.camera.BACKENDS))
 def test_sample_simple(backend: str):
-    with pyvirtualcam.Camera(width=1280, height=720, fps=20, backend=backend, print_fps=True) as cam:
+    with pyvirtualcam2.Camera(width=1280, height=720, fps=20, backend=backend, print_fps=True) as cam:
         print(f'Using virtual camera: {cam.device}')
         frame = np.zeros((cam.height, cam.width, 3), np.uint8) # RGB
         for _ in range(100):

@@ -57,7 +57,7 @@ class VirtualOutput {
   public:
     VirtualOutput(uint32_t width, uint32_t height, double fps, uint32_t fourcc,
                   std::optional<std::string> device_) {
-        NSString *dal_plugin_path = @"/Library/CoreMediaIO/Plug-Ins/DAL/obs-mac-virtualcam.plugin";
+        NSString *dal_plugin_path = @"/Library/CoreMediaIO/Plug-Ins/DAL/obs-mac-virtualcam2.plugin";
         NSFileManager *file_manager = [NSFileManager defaultManager];
         BOOL dal_plugin_installed = [file_manager fileExistsAtPath:dal_plugin_path];
         if (!dal_plugin_installed) {
@@ -69,7 +69,7 @@ class VirtualOutput {
         NSDictionary *dal_plugin_info_plist = [NSDictionary
             dictionaryWithContentsOfURL:
                 [NSURL fileURLWithPath:
-                        @"/Library/CoreMediaIO/Plug-Ins/DAL/obs-mac-virtualcam.plugin/Contents/Info.plist"]];
+                        @"/Library/CoreMediaIO/Plug-Ins/DAL/obs-mac-virtualcam2.plugin/Contents/Info.plist"]];
         NSString *dal_plugin_version = [dal_plugin_info_plist
             valueForKey:@"CFBundleShortVersionString"];
         if ([dal_plugin_version hasPrefix:@"26."] || [dal_plugin_version hasPrefix:@"27."]) {
@@ -255,7 +255,7 @@ class VirtualOutput {
     std::string device()
     {
         // https://github.com/obsproject/obs-studio/blob/eb98505a2/plugins/mac-virtualcam/src/dal-plugin/OBSDALDevice.mm#L106
-        return "OBS Virtual Camera";
+        return "OBS Virtual Camera2";
     }
 
     uint32_t native_fourcc() {

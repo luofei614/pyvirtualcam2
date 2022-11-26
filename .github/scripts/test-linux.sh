@@ -23,7 +23,7 @@ fi
 PYVER=${PYTHON_VERSION//.}
 
 # Install package and test
-${PYBIN}/pip install ./dist/pyvirtualcam*cp${PYVER}*manylinux*.whl
+${PYBIN}/pip install ./dist/pyvirtualcam2*cp${PYVER}*manylinux*.whl
 
 ${PYBIN}/pip install -r dev-requirements.txt
 
